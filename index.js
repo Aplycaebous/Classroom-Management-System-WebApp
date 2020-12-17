@@ -42,7 +42,11 @@ loginForm.addEventListener('submit', (e) =>
     }
     else if(type === 'CR')
     {
-        console.log("Bruh");
+        window.location.href = "UserProfileCR.html";
+    }
+    else if(type === 'Faculty')
+    {
+        window.location.href = "UserProfileFaculty.html";
     }
     
   });
