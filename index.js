@@ -25,34 +25,3 @@ window.onclick = function(event) {
     }
 }
 
-//Login function
-const loginForm = document.querySelector('#login-form');
-loginForm.addEventListener('submit', (e) => 
-{
-  e.preventDefault();
-  // get user info
-  const email = loginForm['login-email'].value;
-  const password = loginForm['login-password'].value;
-  const type = loginForm['UserType'].value;
-  // log the user in
-  auth.signInWithEmailAndPassword(email, password).then((cred) => {
-    console.log("User logged in successfully");
-    if(type === 'Student')
-    {
-        window.location.href = "UserProfileStudent.html";
-    }
-    else if(type === 'CR')
-    {
-        window.location.href = "UserProfileCR.html";
-    }
-    else if(type === 'Faculty')
-    {
-        window.location.href = "UserProfileFaculty.html";
-    }
-    
-  });
-
-});
-
-
-

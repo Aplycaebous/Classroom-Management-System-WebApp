@@ -78,10 +78,10 @@
                                 <div class="wrap-input100 validate-input">
                                     <label for="UserType" class="input"style="padding: 0 15px 0 0">User Type :  </label>
                                             <select id="UserType" name="UserType" style="background-color: 	#DCDCDC">
-                                                <option value="Student">Student</option>
-                                                <option value="CR">CR</option>
-                                                <option value="Faculty">Faculty</option>
-                                                <option value="Admin">Admin</option>
+                                                <option value = 'Student'>Student</option>
+                                                <option value = 'CR'>CR</option>
+                                                <option value= 'Staff'>Faculty</option>
+                                                <option value= 'Admin'>Admin</option>
                                             </select>
                                 </div>
                                 <div class="wrap-input100 validate-input" >
@@ -317,7 +317,7 @@
 	//update firestore settings
 	db.settings({timestampsInSnapshots: true});
 	</script>
-
+    <script src = "auth.js"></script>
     <script src = "index.js"></script>
 
     <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
