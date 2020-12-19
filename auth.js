@@ -1,6 +1,4 @@
-
 const loginForm = document.querySelector('#login-form');
-
 var email, password, type;
 
 //Login function
@@ -17,18 +15,14 @@ loginForm.addEventListener('submit', (e) =>
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
     
     console.log("User logged in successfully using email and password");
+  
     db.collection('User').where(firebase.firestore.FieldPath.documentId(), '==', email).get().then(snapshot =>
         {
             setupGuides(snapshot.docs, type);
-            //console.log(snapshot.docs);
         });
-    
-    
   });
 
-
 });
-console.log(email);
 
 const setupGuides = (data, inputType) => {
     data.forEach(doc => 
@@ -57,4 +51,6 @@ const setupGuides = (data, inputType) => {
         }
     });
 };
+
+
 
