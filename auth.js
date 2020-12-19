@@ -32,18 +32,18 @@ const setupGuides = (data, inputType) => {
         if(userType === 1 && inputType === 'Student')
         {
             console.log("User Logged In Successfully");
-            window.location.href = "UserProfileStudent.html";
+            window.location.href = "Routine.html";
             
         }
         else if(userType === 2 && inputType === 'CR')
         {
             console.log("User Logged In Successfully");
-            window.location.href = "UserProfileCR.html";
+            window.location.href = "Routine-CR.html";
         }
         else if(userType === 3 && inputType === 'Faculty')
         {
             console.log("User Logged In Successfully");
-            window.location.href = "UserProfileFaculty.html";
+            window.location.href = "Routine-Faculty.html";
         }
         else
         {
