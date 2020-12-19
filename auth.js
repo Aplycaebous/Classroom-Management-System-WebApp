@@ -1,7 +1,7 @@
 
 const loginForm = document.querySelector('#login-form');
 
-
+var email, password, type;
 
 //Login function
 
@@ -9,9 +9,9 @@ loginForm.addEventListener('submit', (e) =>
 {
   e.preventDefault();
   // get user info
-    const email = loginForm['login-email'].value;
-    const password = loginForm['login-password'].value;
-    const type = loginForm['UserType'].value;
+    email = loginForm['login-email'].value;
+    password = loginForm['login-password'].value;
+    type = loginForm['UserType'].value;
     
   // log the user in
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
@@ -28,7 +28,7 @@ loginForm.addEventListener('submit', (e) =>
 
 
 });
-
+console.log(email);
 
 const setupGuides = (data, inputType) => {
     data.forEach(doc => 
@@ -53,7 +53,8 @@ const setupGuides = (data, inputType) => {
         }
         else
         {
-            console.log("Invalid Credentials");
+            console.log(`Error: User is not a ${inputType}`);
         }
     });
 };
+
