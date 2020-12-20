@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Book Room</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="node_modules/animate.css/animate.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href= "node_modules/hamburgers/dist/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="node_modules/select2/dist/css/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="assets/css_login/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css_login/util.css">
+<!--===============================================================================================-->
+<div class="topnav" id="mytopnav">
+	<a href="UserProfileCR.html">User Profile</a>
+	<a href="Routine-CR.html">View Routine</a>
+	<a href="../Login/ChangeUsernamePass-CR.html">Change Username/Password</a> 
+	<a href="BookRoom.html" class="active">Book Room</a>
+	<a href="BookingRecordsWithDelete-CR.html">View/Delete Booking Records</a>
+	<a href="Logout.html">Log Out</a>   
+</div>  
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form" >
+					<span class="login100-form-title">
+						Search & Book Room
+					</span>
+
+					<div class="wrap-input100 validate-input">
+						<label for="BuildingNo" class="input" style="padding: 0 15px 0 0">Building Number :  </label>
+                                <select id="BuildingNo" name="BuildingNo" style="background-color: 	#DCDCDC">
+									<!--List will be dynamically loaded from Firestore using js-->
+                                </select>
+					</br>
+					<label for="Capacity" class="input" style="padding: 0 10px 0 0">Capacity (max 200):  </label>
+                              <input type="number" id="capacity" name="capacity" min="1" max="200" style="background-color: 	#DCDCDC" value="20"></br>
+                    <label for="Equipments" class="input"style="padding: 0 20px 0 0">Equipments : </label>
+                             <input type="checkbox" id="AC" name="AC" value="AC" >
+                                  <label for="AC"> AC </label>
+                              <input type="checkbox" id="Projector" name="Projector" value="Projector" >
+                                  <label for="Projector"> Projector </label></br>
+                    <label for="Boards" class="input" style="padding: 0 50px 0 0">Boards :  </label>
+							  <input type="number" id="Boards" name="Boards" min="1" max="4" style="background-color:#DCDCDC"value="2"></br>
+							  <label for="Date" class="input"style="padding: 0 10px 0 0">Date:</label>
+                           <input type="date" id="Date" name="Date" style="background-color:#DCDCDC"></br>
+                     <label class="input" for="StartTime"style="padding: 0 20px 0 0">Starting Time:</label>
+                           <input type="time" id="StartTime" name="StartTime"></br>
+                      <label class="input" for="EndTime"style="padding: 0 28px 0 0">Ending Time:</label>
+                           <input type="time" id="EndTime" name="EndTime"></br>
+                    </div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Search
+						</button>
+					</div></br></br>
+					<div class="wrap-input100 validate-input">
+					
+                      <label for="RoomNo" class="input"style="padding: 0 15px 0 0">Room Number :  </label>
+                                <select id="RoomNo" name="RoomNo" style="background-color: 	#DCDCDC">
+                                <option value="101">101</option>
+                                <option value="102">102</option>
+                                <option value="103">103</option>
+                                </select>
+                      </div>
+                      <div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Book Room
+						</button>
+					</div>
+					<div class="text-center p-t-100">
+						<a href="../Table/BookingRecordsWithDelete-CR.html">Show Booking Records</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-firestore.js"></script>
+	<script>
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		var firebaseConfig = {
+			apiKey: "AIzaSyC779fYGX4FppGMWHRa7adUBOVUFHVmpMc",
+			authDomain: "classroom-management-sys-62bac.firebaseapp.com",
+			databaseURL: "https://classroom-management-sys-62bac.firebaseio.com",
+			projectId: "classroom-management-sys-62bac",
+			storageBucket: "classroom-management-sys-62bac.appspot.com",
+			appId: "1:629847542385:web:45cc8a1e459b99de7669d0",
+			measurementId: "G-5Q3ZRGNXW8"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		//make auth and firestore references
+		const auth = firebase.auth();
+		const db = firebase.firestore();
+		//update firestore settings
+		db.settings({timestampsInSnapshots: true});
+	</script>
+	<script src = "bookRoomCR.js"></script>
+
+</body>
+</html>
