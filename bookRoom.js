@@ -93,12 +93,14 @@ auth.onAuthStateChanged(user =>
         bookRoom = bookForm['RoomNo'].value;
         courseID = bookForm['courseID'].value;
         routineID = bookForm['routineList'].value;
+        notes = bookForm['notes'].value;
         bookingRecord = bookRoom + "-" + convertDate(date) + "-" + timeSlot;
         //console.log(bookingRecord + courseID + routineID);
         db.collection("Record").doc(bookingRecord).set({
             CourseID: courseID,
             RoutineID: routineID,
-            UserEmail: email
+            UserEmail: email,
+            Notes: notes
         })
         .then(function() 
         {
