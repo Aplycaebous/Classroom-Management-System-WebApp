@@ -65,6 +65,3 @@ const setupGuides = (data, email) =>
     userTable.innerHTML = html;
 
 }
-
-
-
