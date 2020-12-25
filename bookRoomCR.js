@@ -1,8 +1,14 @@
+const buildingList = document.querySelector("#BuildingNo");
+const submitForm = document.querySelector("#searchForm");
+const roomList = document.querySelector("#RoomNo");
+const bookForm = document.querySelector("#bookForm");
+const routineList = document.querySelector("#routineList");
 
 loadBuildingList();
+loadRoutineList();
 
 //Fetch & Display Buildings List
-const buildingList = document.querySelector("#BuildingNo");
+
 function loadBuildingList()
 {
     db.collection('Building').get().then(snapshot =>
@@ -18,36 +24,94 @@ function loadBuildingList()
     });
 }
 
+//Fetch and Load Routine List
+function loadRoutineList()
+{
+    db.collection('Routine').get().then(snapshot =>
+    {
+        var routineHTML = ``;
+        const routineData = snapshot.docs;
+        routineData.forEach(doc => 
+        {
+            var routineContent = `<option value = "${doc.id}">${doc.id}</option>`;
+            routineHTML += routineContent;
+        })
+        routineList.innerHTML = routineHTML;
+    });
+}
+
 //Search Rooms based on credentials
 
 function searchRoom(building, AC, projector, board, capacity)
 {
+    date = submitForm['Date'].value;
+    timeSlot = submitForm['timeSlot'].value;
+    var convertedDate = convertDate(date);
     db.collection("Room").where("AC","==", AC).where("Projector","==",projector).where("Board","==",Number(board)).where("Capacity",">=",Number(capacity)).get().then
     ( 
         snapshot =>
         {
+            var roomHTML = ``;
             var roomIDList = [];
+            var updatedRoomList = [];
             const snapData = snapshot.docs;
             snapData.forEach(doc => 
             {
                 if((building == "") || (building === doc.id.charAt(0)))
                 { 
-                    console.log(doc.id);
-                   roomIDList.push(doc.id);
+                    roomIDList.push(doc.id);
                 }
             })
-            //checks record
-            //dispays roomlist                 
+            //Checks booking conflicts and updates the room list 
+            
+            roomIDList.forEach( element =>
+            {
+                recordID = element + '-' + convertedDate + '-' + timeSlot;
+                db.collection('Record').doc(recordID).get().then((docSnapshot) => 
+                {
+                    if (!docSnapshot.exists) 
+                    {
+                        updatedRoomList.push(element);
+                        //displays roomlist 
+                        roomHTML += `<option value = "${element}">${element}</option>`;
+                        roomList.innerHTML = roomHTML;
+                    }
+                })
+            })
         }
     )
-   
 }
 
 
+//Book Selected Room
+auth.onAuthStateChanged(user => 
+{
+    bookForm.addEventListener('submit',(f) =>
+    {
+        f.preventDefault();
+        email = user.email;
+        bookRoom = bookForm['RoomNo'].value;
+        courseID = bookForm['courseID'].value;
+        routineID = bookForm['routineList'].value;
+        bookingRecord = bookRoom + "-" + convertDate(date) + "-" + timeSlot;
+        //console.log(bookingRecord + courseID + routineID);
+        db.collection("Record").doc(bookingRecord).set({
+            CourseID: courseID,
+            RoutineID: routineID,
+            UserEmail: email
+        })
+        .then(function() 
+        {
+            console.log("Room Booked Successfully");
+        })
+        .catch(function(error) 
+        {
+            console.error("Error writing document: ", error);
+        });
+    })
+})
 
 //Make Room List based on Room credentials 
-
-const submitForm = document.querySelector("#submit-form");
 submitForm.addEventListener('submit', (e) => 
 {
     e.preventDefault();
@@ -60,3 +124,16 @@ submitForm.addEventListener('submit', (e) =>
     searchRoom(buildingNo, AC, projector, board, capacity);   
 })
 
+function convertDate(dateIn)
+{
+    let dateYear = dateIn.charAt(0);
+    dateYear += dateIn.charAt(1);
+    dateYear += dateIn.charAt(2);
+    dateYear += dateIn.charAt(3);
+
+    let dateMonth = dateIn.charAt(5) + dateIn.charAt(6);
+    let dateDay = dateIn.charAt(8) + dateIn.charAt(9);
+
+    let dateOut = dateDay + '-' + dateMonth + '-' + dateYear;
+    return dateOut;
+}

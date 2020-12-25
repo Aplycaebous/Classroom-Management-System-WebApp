@@ -42,8 +42,8 @@ function displayRoutine(routineID)
                     <th class="column100 column6" data-column="column5">12:00 - 12:50</th>
                     <th class="column100 column7" data-column="column6">2:10 - 3:00</th>
                     <th class="column100 column8" data-column="column7">3:10 - 4:00</th>
-                    <th class="column100 column9" data-column="column8">4:10 - 5:00</th>
-                    <th class="column100 column10" data-column="column9">5:10 - 6:00</th>
+                    <th class="column100 column9" data-column="column8">4:15 - 5:05</th>
+                    <th class="column100 column10" data-column="column9">5:15 - 6:05</th>
                 </tr>
             </thead>
             <tbody>

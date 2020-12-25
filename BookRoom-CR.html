@@ -37,7 +37,7 @@
 					<img src="images/img-01.png" alt="IMG">
 				</div>
 
-				<form id ="submit-form" class="login100-form validate-form" >
+				<form id ="searchForm" class="login100-form validate-form" >
 					<span class="login100-form-title">
 						Search & Book Room
 					</span>
@@ -63,26 +63,41 @@
 							</select>
 						<label for="Date" class="input"style="padding: 0 10px 0 0">Date:</label>
                     		<input type="date" id="Date" name="Date" style="background-color:#DCDCDC"></br>
-                    	<label class="input" for="StartTime"style="padding: 0 20px 0 0">Starting Time:</label>
-                           <input type="time" id="StartTime" name="StartTime"></br>
-                      	<label class="input" for="EndTime"style="padding: 0 28px 0 0">Ending Time:</label>
-                           <input type="time" id="EndTime" name="EndTime"></br>
+                    	<label class="input" for="StartTime"style="padding: 0 0 0 0">Time Slot: </label>
+							<select name="timeSlot" style="background-color: 	#DCDCDC">
+								<option value = "1">9:00 AM - 9:50 AM</option>
+								<option value = "2">10:00 AM - 10:50 AM</option>
+								<option value = "3">11:00 AM - 11:50 AM</option>
+								<option value = "4">12:00 AM - 12:50 AM</option>
+								<option value = "5">02:10 PM - 03:00 PM</option>
+								<option value = "6">03:10 PM - 04:00 PM</option>
+								<option value = "7">04:15 PM - 05:05 PM</option>
+								<option value = "8">05:15 PM - 06:05 PM</option>
+							</select>
                     </div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Search Room
 						</button>
 					</div></br></br>
-					<div class="wrap-input100 validate-input">
 					
-                      <label for="RoomNo" class="input"style="padding: 0 15px 0 0">Room Number :  </label>
-                                <select id="RoomNo" name="RoomNo" style="background-color: 	#DCDCDC">
-                                <option value="101">101</option>
-                                <option value="102">102</option>
-                                <option value="103">103</option>
-                                </select>
-                      </div>
-                      <div class="container-login100-form-btn">
+				</form>
+				<form id ="bookForm" class="login100-form validate-form">
+					<div class="wrap-input100 validate-input">
+						<label for="RoomNo" class="input"style="padding: 0 15px 0 0">Room Number :  </label>
+							<select id="RoomNo" name="RoomNo" style="background-color: 	#DCDCDC">
+							</select>
+						<br>
+						<label for = "RoutineID" class="input" style="padding: 0 15px 0 0">Routine ID :  </label>
+							<select id="routineList" name="routineList" style="background-color: 	#DCDCDC">
+								<!--List will be dynamically loaded from Firestore using js-->
+							</select>
+						<br>
+						<label for="Course" class="input" style="padding: 0 0px 0 0">Course ID: </label>
+							<input type="text" id="courseID" name="courseID" style="background-color: 	#DCDCDC">
+						</br>
+					</div>
+					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Book Room
 						</button>
