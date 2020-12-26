@@ -83,3 +83,12 @@ function convertTimeSlot(slotNo)
     }
     return out;
 }
+
+//Logout
+const logoutButton = document.querySelector('#logoutButton');
+
+logoutButton.onclick = function()
+{
+    auth.signOut();
+    console.log("User signed out successfully");
+}

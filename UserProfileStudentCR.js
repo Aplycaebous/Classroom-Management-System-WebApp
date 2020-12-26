@@ -75,3 +75,12 @@ const setupGuides = (data, email) =>
     userTable.innerHTML = html;
 
 }
+
+//Logout
+const logoutButton = document.querySelector('#logoutButton');
+
+logoutButton.onclick = function()
+{
+    auth.signOut();
+    console.log("User signed out successfully");
+}

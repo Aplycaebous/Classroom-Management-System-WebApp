@@ -139,3 +139,12 @@ function convertDate(dateIn)
     let dateOut = dateDay + '-' + dateMonth + '-' + dateYear;
     return dateOut;
 }
+
+//Logout
+const logoutButton = document.querySelector('#logoutButton');
+
+logoutButton.onclick = function()
+{
+    auth.signOut();
+    console.log("User signed out successfully");
+}

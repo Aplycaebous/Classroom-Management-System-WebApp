@@ -121,39 +121,11 @@ function displayRoutine(routineID)
     });
 }
 
-const setRoutineTable = (data, email) =>
-{
+//Logout
+const logoutButton = document.querySelector('#logoutButton');
 
-    //fetch Routine ID
-    /*
-    var routineID;
-    data.forEach(doc => 
-    {
-        const data = doc.data();
-        routineID = data.Batch;
-        routineID += "-";
-        routineID += data.Section;
-    })
-    */
-    /*
-    db.collection('Routine').where(firebase.firestore.FieldPath.documentId(), '==', routineID).get().then(snapshot =>
-    {
-        setupGuides(snapshot.docs, routineID);
-    });
-    */
-}
-
-/*
-const setupGuides = (data, rID) =>
+logoutButton.onclick = function()
 {
-    console.log(rID);
-    
-    data.forEach(doc => 
-    {
-        
-        
-        
-    });
-    
+    auth.signOut();
+    console.log("User signed out successfully");
 }
-*/
