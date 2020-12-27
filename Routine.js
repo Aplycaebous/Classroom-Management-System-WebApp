@@ -1,5 +1,5 @@
 const routineTable = document.querySelector('#routine-table');
-
+const topNav = document.querySelector('#navContent');
 //Fetch Routine ID and display routine
 auth.onAuthStateChanged(user => 
 {
@@ -9,7 +9,26 @@ auth.onAuthStateChanged(user =>
     {
         if (docUser.exists) 
         {
-            const routineID = docUser.data().Batch + '-' + docUser.data().Section;
+            docData = docUser.data();
+            if(docData.Type === 1)
+            {
+                topNav.innerHTML = `
+                    <a href="UserProfile.html" >User Profile</a>
+                    <a class="active">View Routine</a>
+                    <a href="ChangePassword.html">Change Password</a> 
+                `
+            }
+            else if(docData.Type === 2)
+            {
+                topNav.innerHTML = `
+                <a href="UserProfile.html">User Profile</a>
+                <a class="active">View Routine</a>
+                <a href="ChangePassword.html">Change Password</a> 
+                <a href="BookRoom.html">Book Room</a>
+                <a href="BookingRecords.html">Booking Records</a>
+                `
+            }
+            const routineID = docData.Batch + '-' + docData.Section;
             displayRoutine(routineID);
         } 
         else 
@@ -18,7 +37,7 @@ auth.onAuthStateChanged(user =>
         }
     }).catch(function(error)
     {
-        console.log("Error getting document:", error);
+        routineTable.innerHTML = `<h1>Error getting document: ${error}</h1>`;
     });  
 })
 
@@ -28,8 +47,6 @@ function displayRoutine(routineID)
     docRefRoutine.get().then( function(docRefRoutine)
     {
         const data = docRefRoutine.data();
-       // console.log(data.Monday[1]);
-        console.log(data.Monday[2]);
         const tableContent = 
         `
         <table data-vertable="ver1">
