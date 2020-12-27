@@ -21,14 +21,12 @@ loginForm.addEventListener('submit', (e) =>
             setupGuides(snapshot.docs, type);
         });
   });
-
 });
 
 const setupGuides = (data, inputType) => {
     data.forEach(doc => 
     {
         const userType = doc.data().Type;
-    
         if(userType === 1 && inputType === 'Student')
         {
             console.log("User Logged In Successfully");
@@ -38,7 +36,7 @@ const setupGuides = (data, inputType) => {
         else if(userType === 2 && inputType === 'CR')
         {
             console.log("User Logged In Successfully");
-            window.location.href = "Routine-CR.html";
+            window.location.href = "Routine.html";
         }
         else if(userType === 3 && inputType === 'Faculty')
         {
@@ -51,6 +49,3 @@ const setupGuides = (data, inputType) => {
         }
     });
 };
-
-
-

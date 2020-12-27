@@ -498,3 +498,9 @@ iframe {
 .topnav .icon {
   display: none;
 }
+
+#successMessage
+{
+  text-align: center;
+  color: #da1c1cea;
+}

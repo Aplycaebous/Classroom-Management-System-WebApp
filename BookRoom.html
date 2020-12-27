@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -21,24 +21,23 @@
 	<link rel="stylesheet" type="text/css" href="assets/css_login/util.css">
 <!--===============================================================================================-->
 <div class="topnav" id="mytopnav">
-	<a href="UserProfile.html">User Profile</a>
-	<a href="../Login/ChangeUsernamePass-CR.html">Change Username/Password</a> 
-	<a href="BookRoom-Faculty.html" class="active">Book Room</a>
-	<a href="BookingRecordsWithDelete-Faculty.html">View/Delete Booking Records</a>
-	<button id = "logoutButton"><a href="index.html">Log Out</a></button>  
-</div>
+	<div id = "navContent">
+		<!-- NavBar will be dynamically loaded -->
+	</div>
+	<button id = "logoutButton"><a href="index.html">Log Out</a></button> 
+</div>  
 </head>
 <body>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
+				<!-- <div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
-				</div>
+				</div> -->
 
 				<form id ="searchForm" class="login100-form validate-form" >
 					<span class="login100-form-title">
-						Search & Book Room
+						Search Room
 					</span>
 
 					<div class="wrap-input100 validate-input">
@@ -82,6 +81,9 @@
 					
 				</form>
 				<form id ="bookForm" class="login100-form validate-form">
+					<span class="login100-form-title">
+						Book Room
+					</span>
 					<div class="wrap-input100 validate-input">
 						<label for="RoomNo" class="input"style="padding: 0 15px 0 0">Room Number :  </label>
 							<select id="RoomNo" name="RoomNo" style="background-color: 	#DCDCDC">
@@ -104,7 +106,10 @@
 							Book Room
 						</button>
 					</div>
+					<br>
+					<div id = "successMessage"></div>
 				</form>
+				
 			</div>
 		</div>
 	</div>

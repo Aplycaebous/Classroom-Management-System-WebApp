@@ -137,8 +137,8 @@ const setupGuides = (data, email) =>
             <a href="UserProfile.html" class="active">User Profile</a>
             <a href="Routine.html">View Routine</a>
             <a href="ChangePassword.html">Change Password</a> 
-            <a href="BookRoom-CR.html">Book Room</a>
-            <a href="BookingRecordsWithDelete-CR.html">Booking Records</a>
+            <a href="BookRoom.html">Book Room</a>
+            <a href="BookingRecordsWithDelete.html">Booking Records</a>
             `
         }
         else if(data.Type === 3)
@@ -146,8 +146,8 @@ const setupGuides = (data, email) =>
             topNav.innerHTML = `
             <a href="UserProfileFaculty.html" class="active">User Profile</a>
               <a href="ChangePassword.html">Change Password</a> 
-              <a href="BookRoom-Faculty.html">Book Room</a>
-              <a href="BookingRecordsWithDelete-Faculty.html">Booking Records</a>`
+              <a href="BookRoom.html">Book Room</a>
+              <a href="BookingRecordsWithDelete.html">Booking Records</a>`
         }
         
     });

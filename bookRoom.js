@@ -8,7 +8,6 @@ loadBuildingList();
 loadRoutineList();
 
 //Fetch & Display Buildings List
-
 function loadBuildingList()
 {
     db.collection('Building').get().then(snapshot =>
@@ -41,7 +40,6 @@ function loadRoutineList()
 }
 
 //Search Rooms based on credentials
-
 function searchRoom(building, AC, projector, board, capacity)
 {
     date = submitForm['Date'].value;
@@ -63,7 +61,6 @@ function searchRoom(building, AC, projector, board, capacity)
                 }
             })
             //Checks booking conflicts and updates the room list 
-            
             roomIDList.forEach( element =>
             {
                 recordID = element + '-' + convertedDate + '-' + timeSlot;
@@ -82,14 +79,18 @@ function searchRoom(building, AC, projector, board, capacity)
     )
 }
 
-
 //Book Selected Room
 auth.onAuthStateChanged(user => 
 {
+    email = user.email;
+    db.collection('User').where(firebase.firestore.FieldPath.documentId(), '==', email).get().then(snapshot =>
+    {
+        setupNav(snapshot.docs);
+    });
     bookForm.addEventListener('submit',(f) =>
     {
         f.preventDefault();
-        email = user.email;
+        
         bookRoom = bookForm['RoomNo'].value;
         courseID = bookForm['courseID'].value;
         routineID = bookForm['routineList'].value;
@@ -104,7 +105,8 @@ auth.onAuthStateChanged(user =>
         })
         .then(function() 
         {
-            console.log("Room Booked Successfully");
+            const popMessage = document.querySelector("#successMessage");
+            popMessage.innerHTML = "*Room Booked Successfully*";
         })
         .catch(function(error) 
         {
@@ -112,6 +114,33 @@ auth.onAuthStateChanged(user =>
         });
     })
 })
+
+//Set up the NavBar
+const navContent = document.querySelector("#navContent");
+const setupNav = (data) => {
+    data.forEach(doc => 
+    {
+        const userType = doc.data().Type;
+        if(userType === 2)
+        {
+            navContent.innerHTML = `
+            <a href="UserProfile.html">User Profile</a>
+            <a href="Routine.html">View Routine</a>
+            <a href="ChangePassword.html">Change Password</a> 
+            <a class="active">Book Room</a>
+            <a href="BookingRecordsWithDelete.html">Booking Records</a>
+            `
+        }
+        else if(userType === 3)
+        {
+            navContent.innerHTML = `
+            <a href="UserProfileFaculty.html">User Profile</a>
+            <a href="ChangePassword.html">Change Password</a> 
+            <a class="active">Book Room</a>
+            <a href="BookingRecordsWithDelete.html">Booking Records</a>`
+        }
+    });
+};
 
 //Make Room List based on Room credentials 
 submitForm.addEventListener('submit', (e) => 
@@ -142,7 +171,6 @@ function convertDate(dateIn)
 
 //Logout
 const logoutButton = document.querySelector('#logoutButton');
-
 logoutButton.onclick = function()
 {
     auth.signOut();
