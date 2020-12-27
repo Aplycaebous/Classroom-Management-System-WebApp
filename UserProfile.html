@@ -9,36 +9,33 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="assets/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/animate.css/animate.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="assets/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="assets/perfect-scrollbar/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="assets/css_userprofile/util.css">
-<link rel="stylesheet" type="text/css" href="assets/css_userprofile/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css_userprofile/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css_userprofile/main.css">
 <!--===============================================================================================-->
       <div class="topnav" id="mytopnav">
-          <a href="UserProfileStudent-CR.html" class="active">User Profile</a>
-          <a href="Routine-CR.html">View Routine</a>
-          <a href="../Login/ChangeUsernamePass-CR.html">Change Username/Password</a> 
-          <a href="BookRoom-CR.html">Book Room</a>
-          <a href="BookingRecordsWithDelete-CR.html">View/Delete Booking Records</a>
-		  <button id = "logoutButton"><a href="index.html">Log Out</a></button>   
+		<div id = "navContent">
+			<!-- contents of the navbar will be dynamically loaded -->
+		</div>
+          <button id = "logoutButton"><a href="index.html">Log Out</a></button>
       </div>  
-      
+      </div>
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-table100">
-			<div id = "profile-table" class="wrap-table100">
+			<div id = "profile-table" class="wrap-table100">	
 			</div>
 		</div>
 	</div>
-</body>
-<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-firestore.js"></script>
 	<script>
@@ -60,5 +57,6 @@
 		//update firestore settings
 		db.settings({timestampsInSnapshots: true});
 	</script>
-	<script src = "UserProfileStudentCR.js"></script>
+	<script src = "UserProfile.js"></script>
+</body>
 </html>
