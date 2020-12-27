@@ -1,8 +1,13 @@
 const tableBody = document.querySelector("#tableBody");
+const navBar = document.querySelector("#navContent");
 
 auth.onAuthStateChanged(user => 
 {
     var email = user.email;
+    db.collection('User').where(firebase.firestore.FieldPath.documentId(), '==', email).get().then(snapshot =>
+    {
+        setupNav(snapshot.docs);
+    });
     db.collection('Record').where('UserEmail','==',email).get().then(snapshot =>
     {
         var html = ``;
@@ -92,3 +97,29 @@ logoutButton.onclick = function()
     auth.signOut();
     console.log("User signed out successfully");
 }
+//Set up the NavBar
+const navContent = document.querySelector("#navContent");
+const setupNav = (data) => {
+    data.forEach(doc => 
+    {
+        const userType = doc.data().Type;
+        if(userType === 2)
+        {
+            navContent.innerHTML = `
+            <a href="UserProfile.html">User Profile</a>
+            <a href="Routine.html">View Routine</a>
+            <a href="ChangePassword.html">Change Password</a> 
+            <a href = "BookRoom.html">Book Room</a>
+            <a class="active">Booking Records</a>
+            `
+        }
+        else if(userType === 3)
+        {
+            navContent.innerHTML = `
+            <a href="UserProfile.html">User Profile</a>
+            <a href="ChangePassword.html">Change Password</a> 
+            <a href = "BookRoom.html">Book Room</a>
+            <a class="active">Booking Records</a>`
+        }
+    });
+};

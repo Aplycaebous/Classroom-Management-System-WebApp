@@ -138,16 +138,16 @@ const setupGuides = (data, email) =>
             <a href="Routine.html">View Routine</a>
             <a href="ChangePassword.html">Change Password</a> 
             <a href="BookRoom.html">Book Room</a>
-            <a href="BookingRecordsWithDelete.html">Booking Records</a>
+            <a href="BookingRecords.html">Booking Records</a>
             `
         }
         else if(data.Type === 3)
         {
             topNav.innerHTML = `
-            <a href="UserProfileFaculty.html" class="active">User Profile</a>
+            <a href="UserProfile.html" class="active">User Profile</a>
               <a href="ChangePassword.html">Change Password</a> 
               <a href="BookRoom.html">Book Room</a>
-              <a href="BookingRecordsWithDelete.html">Booking Records</a>`
+              <a href="BookingRecords.html">Booking Records</a>`
         }
         
     });

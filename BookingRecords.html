@@ -20,12 +20,10 @@
 <link rel="stylesheet" type="text/css" href="assets/css_userprofile/main.css">
 <!--===============================================================================================-->
       <div class="topnav" id="mytopnav">
-          <a href="UserProfile.html">User Profile</a>
-          <a href="Routine-CR.html">View Routine</a>
-          <a href="../Login/ChangeUsernamePass-CR.html">Change Username/Password</a> 
-          <a href="../Login/BookRoom.html">Book Room</a>
-          <a href="BookingRecordsWithDelete-CR.html" class="active">View/Delete Booking Records</a>
-		  <button id = "logoutButton"><a href="index.html">Log Out</a></button>  
+	  	<div id = "navContent">
+			<!-- Navbar will be dynamically loaded -->
+		</div>
+		<button id = "logoutButton"><a href="index.html">Log Out</a></button>  
       </div>  
 </head>
 <body>
@@ -82,6 +80,6 @@
 		//update firestore settings
 		db.settings({timestampsInSnapshots: true});
 	</script>
-	<script src = "userRecords.js"></script>
+	<script src = "BookingRecords.js"></script>
 </body>
 </html>

@@ -20,7 +20,14 @@ loginForm.addEventListener('submit', (e) =>
         {
             setupGuides(snapshot.docs, type);
         });
-  });
+  }).catch((e) =>
+    {
+        const failMessage = document.querySelector("#failMessage");
+        failMessage.innerHTML = `<p style="color:red">*Invalid Login Credentials</p>`;
+        loginForm.reset();
+    }
+  )
+  ;
 });
 
 const setupGuides = (data, inputType) => {
@@ -45,7 +52,8 @@ const setupGuides = (data, inputType) => {
         }
         else
         {
-            console.log(`Error: User is not a ${inputType}`);
+            const failMessage = document.querySelector("#failMessage");
+            failMessage.innerHTML = `<p style="color:red"> *User is not a ${inputType}</p>`;
         }
     });
 };

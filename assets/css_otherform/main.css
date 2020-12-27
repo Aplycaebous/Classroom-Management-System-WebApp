@@ -152,7 +152,7 @@ iframe {
 [ login ]*/
 
 .limiter {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -176,9 +176,11 @@ iframe {
 }
 
 .wrap-login100 {
+  width: 960px;
   background: #fff;
-  border-radius: 30px;
+  border-radius: 10px;
   overflow: hidden;
+
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -186,10 +188,18 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 10% 0% 0% 20%;
-  margin-bottom: 0px;
+  padding: 177px 130px 33px 95px;
 }
 
+/*------------------------------------------------------------------
+[  ]*/
+.login100-pic {
+  width: 316px;
+}
+
+.login100-pic img {
+  max-width: 100%;
+}
 
 
 /*------------------------------------------------------------------
@@ -207,7 +217,7 @@ iframe {
 
   width: 100%;
   display: block;
-  padding-bottom: 30px;
+  padding-bottom: 54px;
 }
 
 
@@ -494,52 +504,3 @@ iframe {
   text-align: center;
   color: #da1c1cea;
 }
-
-#header11-r{  background-color: #EFF3FF ;}
-  #features1-m{  background-color: #EFF3FF ;}
-  #team1-n{  background-color: #EFF3FF ;}
-  #footer3-i{  background-color:  #232323 ;}
-  #form{  margin-left: 12px;  }
-  #btnForm{background-color: blueviolet;}
-  .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-
-.modal-title
-{
-  font-family: Poppins-Medium;
-  text-align: center;
-}
-
-/* The Close Button */
-.close {
-  color: #000000;
-  font-size: 28px;
-  font-weight: bold;
-  background-color: white;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#failMessage
-{
-  text-align: center;
-}
-

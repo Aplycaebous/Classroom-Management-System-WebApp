@@ -3,6 +3,7 @@ const submitForm = document.querySelector("#searchForm");
 const roomList = document.querySelector("#RoomNo");
 const bookForm = document.querySelector("#bookForm");
 const routineList = document.querySelector("#routineList");
+const popMessage = document.querySelector("#successMessage");
 
 loadBuildingList();
 loadRoutineList();
@@ -105,8 +106,7 @@ auth.onAuthStateChanged(user =>
         })
         .then(function() 
         {
-            const popMessage = document.querySelector("#successMessage");
-            popMessage.innerHTML = "*Room Booked Successfully*";
+            popMessage.innerHTML = "*Room Booked Successfully";
         })
         .catch(function(error) 
         {
@@ -128,16 +128,16 @@ const setupNav = (data) => {
             <a href="Routine.html">View Routine</a>
             <a href="ChangePassword.html">Change Password</a> 
             <a class="active">Book Room</a>
-            <a href="BookingRecordsWithDelete.html">Booking Records</a>
+            <a href="BookingRecords.html">Booking Records</a>
             `
         }
         else if(userType === 3)
         {
             navContent.innerHTML = `
-            <a href="UserProfileFaculty.html">User Profile</a>
+            <a href="UserProfile.html">User Profile</a>
             <a href="ChangePassword.html">Change Password</a> 
             <a class="active">Book Room</a>
-            <a href="BookingRecordsWithDelete.html">Booking Records</a>`
+            <a href="BookingRecords.html">Booking Records</a>`
         }
     });
 };
