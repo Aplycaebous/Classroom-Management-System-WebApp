@@ -137,20 +137,19 @@ const setupNav = (data) =>
             navContent.innerHTML = `
             <a href="UserProfile.html">User Profile</a>
             <a href="Routine.html">View Routine</a>
-            <a href="ChangePassword.html">Change Password</a> 
             <a href = "BookRoom.html">Book Room</a>
             <a class="active">Booking Records</a>
+            <a href="ChangePassword.html">Change Password</a> 
             `
         }
         else if(userType === 3)
         {
             navContent.innerHTML = `
             <a href="UserProfile.html">User Profile</a>
-            <a href="ChangePassword.html">Change Password</a> 
             <a href = "BookRoom.html">Book Room</a>
-            <a class="active">Booking Records</a>`
+            <a class="active">Booking Records</a>
+            <a href="ChangePassword.html">Change Password</a> 
+            `
         }
     });
 };
-
- 

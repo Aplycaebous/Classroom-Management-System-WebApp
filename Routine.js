@@ -23,9 +23,9 @@ auth.onAuthStateChanged(user =>
                 topNav.innerHTML = `
                 <a href="UserProfile.html">User Profile</a>
                 <a class="active">View Routine</a>
-                <a href="ChangePassword.html">Change Password</a> 
                 <a href="BookRoom.html">Book Room</a>
                 <a href="BookingRecords.html">Booking Records</a>
+                <a href="ChangePassword.html">Change Password</a> 
                 `
             }
             const routineID = docData.Batch + '-' + docData.Section;
