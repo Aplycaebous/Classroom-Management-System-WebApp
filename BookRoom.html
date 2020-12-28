@@ -47,7 +47,7 @@
 							</select>
 						</br>
 						<label for="Capacity" class="input" style="padding: 0 10px 0 0">Capacity (max 200):  </label>
-							<input type="number" id="capacity" name="capacity" min="1" max="200" style="background-color: 	#DCDCDC" value="20"></br>
+							<input type="number" id="capacity" name="capacity" min="1" max="200" style="background-color: 	#DCDCDC" value="20" required></br>
                     	<label for="Equipments" class="input"style="padding: 0 20px 0 0">Equipments : </label>
                             <input type="checkbox" id="AC" name="AC">
                         <label for="AC"> AC </label>
@@ -60,7 +60,7 @@
 								<option value = "3">High (more than 7) </option>
 							</select>
 						<label for="Date" class="input"style="padding: 0 10px 0 0">Date:</label>
-                    		<input type="date" id="Date" name="Date" style="background-color:#DCDCDC"></br>
+                    		<input type="date" id="Date" name="Date" style="background-color:#DCDCDC" required></br>
                     	<label class="input" for="StartTime"style="padding: 0 0 0 0">Time Slot: </label>
 							<select name="timeSlot" style="background-color: 	#DCDCDC">
 								<option value = "1">9:00 AM - 9:50 AM</option>
@@ -90,7 +90,7 @@
 							</select>
 						<br>
 						<label for = "RoutineID" class="input" style="padding: 0 15px 0 0">Routine ID :  </label>
-							<select id="routineList" name="routineList" style="background-color: 	#DCDCDC">
+							<select id="routineList" name="routineList" style="background-color: 	#DCDCDC" required>
 								<!--List will be dynamically loaded from Firestore using js-->
 							</select>
 						<br>

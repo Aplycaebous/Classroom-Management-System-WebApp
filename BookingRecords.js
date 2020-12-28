@@ -1,6 +1,7 @@
 const tableBody = document.querySelector("#tableBody");
 const navBar = document.querySelector("#navContent");
 
+//User Record Function
 auth.onAuthStateChanged(user => 
 {
     var email = user.email;
@@ -37,14 +38,38 @@ auth.onAuthStateChanged(user =>
                 <td class="column7">${routineID}</td>
                 <td class="column8">${notes}</td>
                 <td class="column9">
-                    <span id = "${recordID}" value = "${recordID}" class = "delete"> X </span>
+                    <span value = "${recordID}" class = "delete"> X </span>
                 </td>
             </tr>`
         })
         tableBody.innerHTML = html;
+
+        //Delete User Record Function
+        const closeButtons = document.getElementsByClassName("delete");
+        for(i = 0; i<closeButtons.length; i++)
+        {
+            closeButtons[i].addEventListener("click", function() 
+            {
+                //remove in UI
+                this.parentElement.parentElement.style.display = 'none';
+                //delete in Database
+                deleteID = this.getAttribute("value")
+                db.collection("Record").doc(deleteID).delete().then(function() 
+                {
+                    const deleteMessage = document.querySelector('#deleteMessage');
+                    deleteMessage.innerHTML = `<p style="color: rgb(180, 0, 0);
+                                                        text-align: center;">
+                                                *Record Deleted Successfully</p>`
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+                
+            })
+        }
     })
 })
 
+//convert Time slots to date strings 
 function convertTimeSlot(slotNo)
 {
     var out = [];
@@ -102,7 +127,8 @@ logoutButton.onclick = function()
 
 //Set up the NavBar
 const navContent = document.querySelector("#navContent");
-const setupNav = (data) => {
+const setupNav = (data) => 
+{
     data.forEach(doc => 
     {
         const userType = doc.data().Type;
@@ -127,16 +153,4 @@ const setupNav = (data) => {
     });
 };
 
-//Delete Record
-
-/* Loop through the elements, and hide the parent, when clicked on */
-
-
-// closebtns.forEach(closeButton =>
-// {
-//     closeButton.addEventListener("click", function() 
-//     {
-//         this.parentElement.style.display = 'none';
-//     })
-// })
  
