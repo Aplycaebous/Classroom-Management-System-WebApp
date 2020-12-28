@@ -13,7 +13,7 @@ auth.onAuthStateChanged(user =>
             if(docData.Type === 1)
             {
                 topNav.innerHTML = `
-                    <a href="UserProfile.html" >User Profile</a>
+                    <a href="UserProfile.html" >Profile</a>
                     <a class="active">View Routine</a>
                     <a href="ChangePassword.html">Change Password</a> 
                 `
@@ -21,7 +21,7 @@ auth.onAuthStateChanged(user =>
             else if(docData.Type === 2)
             {
                 topNav.innerHTML = `
-                <a href="UserProfile.html">User Profile</a>
+                <a href="UserProfile.html">Profile</a>
                 <a class="active">View Routine</a>
                 <a href="BookRoom.html">Book Room</a>
                 <a href="BookingRecords.html">Booking Records</a>

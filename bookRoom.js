@@ -125,7 +125,7 @@ const setupNav = (data) => {
         if(userType === 2)
         {
             navContent.innerHTML = `
-            <a href="UserProfile.html">User Profile</a>
+            <a href="UserProfile.html">Profile</a>
             <a href="Routine.html">View Routine</a>
             <a class="active">Book Room</a>
             <a href="BookingRecords.html">Booking Records</a>
@@ -135,7 +135,7 @@ const setupNav = (data) => {
         else if(userType === 3)
         {
             navContent.innerHTML = `
-            <a href="UserProfile.html">User Profile</a>
+            <a href="UserProfile.html">Profile</a>
             <a class="active">Book Room</a>
             <a href="BookingRecords.html">Booking Records</a>
             <a href="ChangePassword.html">Change Password</a> 

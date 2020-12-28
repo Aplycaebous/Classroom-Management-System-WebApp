@@ -50,6 +50,11 @@ const setupGuides = (data, inputType) => {
             console.log("User Logged In Successfully");
             window.location.href = "UserProfile.html";
         }
+        else if(userType === 4 && inputType === 'Admin')
+        {
+            console.log("User Logged In Successfully");
+            window.location.href = "UserProfile.html";
+        }
         else
         {
             const failMessage = document.querySelector("#failMessage");

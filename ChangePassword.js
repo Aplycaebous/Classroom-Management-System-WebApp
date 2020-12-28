@@ -51,7 +51,7 @@ const setupNav = (data) =>
         {
             navContent.innerHTML = 
             `
-                <a href="UserProfile.html" >User Profile</a>
+                <a href="UserProfile.html" >Profile</a>
                 <a href="Routine.html">View Routine</a>
                 <a class="active">Change Password</a> 
             `
@@ -60,7 +60,7 @@ const setupNav = (data) =>
         {
             navContent.innerHTML = 
             `
-                <a href = "UserProfile.html">User Profile</a>
+                <a href = "UserProfile.html">Profile</a>
                 <a href = "Routine.html">View Routine</a>
                 <a href = "BookRoom.html">Book Room</a>
                 <a href = "BookingRecords.html">Booking Records</a>
@@ -71,7 +71,7 @@ const setupNav = (data) =>
         {
             navContent.innerHTML = 
             `
-                <a href = "UserProfile.html">User Profile</a>
+                <a href = "UserProfile.html">Profile</a>
                 <a href = "BookRoom.html">Book Room</a>
                 <a href = "BookingRecords.html">Booking Records</a>
                 <a class = "active">Change Password</a> 

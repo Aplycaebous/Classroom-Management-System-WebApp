@@ -65,6 +65,40 @@ const setupGuides = (data, email) =>
         </table>
         `
         }
+        else if(data.Type === 4)
+        {
+            tableContent = 
+            `
+        <table>
+            <thead>
+                <tr class="table100-head">
+                    <th class="column1">User Profile</th>
+                    <th class="column2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td class="column1">Name</td>
+                        <td class="column2">${data.Name}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="column1">Email</td>
+                        <td class="column2">${email}</td>
+                        
+                    </tr>
+                    <tr>
+                        <td class="column1">Phone Number</td>
+                        <td class="column2">${data.PhoneNo}</td>    
+                    </tr>
+                    <tr>
+                    <td class="column1">Role</td>
+                    <td class="column2">${data.Role}</td>    
+                </tr>
+            </tbody>
+        </table>
+        `
+        }
         else
         {
         tableContent = 
@@ -126,7 +160,7 @@ const setupGuides = (data, email) =>
         if(data.Type === 1)
         {
             topNav.innerHTML = `
-                <a href="UserProfile.html" class="active">User Profile</a>
+                <a class="active">Profile</a>
                 <a href="Routine.html">View Routine</a>
                 <a href="ChangePassword.html">Change Password</a> 
             `
@@ -134,7 +168,7 @@ const setupGuides = (data, email) =>
         else if(data.Type === 2)
         {
             topNav.innerHTML = `
-                <a href="UserProfile.html" class="active">User Profile</a>
+                <a class="active">Profile</a>
                 <a href="Routine.html">View Routine</a>
                 <a href="BookRoom.html">Book Room</a>
                 <a href="BookingRecords.html">Booking Records</a>
@@ -144,11 +178,23 @@ const setupGuides = (data, email) =>
         else if(data.Type === 3)
         {
             topNav.innerHTML = `
-                <a href="UserProfile.html" class="active">User Profile</a>
+                <a class="active">Profile</a>
                 <a href="BookRoom.html">Book Room</a>
                 <a href="BookingRecords.html">Booking Records</a>
                 <a href="ChangePassword.html">Change Password</a> 
               `
+        }
+        else if(data.Type === 4)
+        {
+            topNav.innerHTML = `
+                <a class="active">Profile</a>
+                <a href = "">User</a>
+                <a href = "">Building</a>
+                <a href = "">Room</a>
+                <a href = "">Department</a>
+                <a href = "">Program</a>
+                <a href = "">Routine</a>
+            `
         }
         
     });
