@@ -1,6 +1,8 @@
+const { get } = require("jquery");
+
 const tableBody = document.querySelector("#tableBody");
 const navBar = document.querySelector("#navContent");
-
+const closebtns = document.getElementsByClassName("delete");
 auth.onAuthStateChanged(user => 
 {
     var email = user.email;
@@ -36,9 +38,15 @@ auth.onAuthStateChanged(user =>
                 <td class="column6">${courseID}</td>
                 <td class="column7">${routineID}</td>
                 <td class="column8">${notes}</td>
-            </tr>
-            `
+                <td class="column9">
+                    <span id = "${recordID}" value = "${recordID}" class = "delete"> X </span>
+                </td>
+            </tr>`
+           
         })
+        
+        
+
         tableBody.innerHTML = html;
     })
 })
@@ -97,6 +105,7 @@ logoutButton.onclick = function()
     auth.signOut();
     console.log("User signed out successfully");
 }
+
 //Set up the NavBar
 const navContent = document.querySelector("#navContent");
 const setupNav = (data) => {
@@ -123,3 +132,17 @@ const setupNav = (data) => {
         }
     });
 };
+
+//Delete Record
+
+/* Loop through the elements, and hide the parent, when clicked on */
+
+
+// closebtns.forEach(closeButton =>
+// {
+//     closeButton.addEventListener("click", function() 
+//     {
+//         this.parentElement.style.display = 'none';
+//     })
+// })
+ 
