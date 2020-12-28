@@ -188,7 +188,7 @@ const setupGuides = (data, email) =>
         {
             topNav.innerHTML = `
                 <a class="active">Profile</a>
-                <a href = "">User</a>
+                <a href = "UserList.html">User</a>
                 <a href = "">Building</a>
                 <a href = "">Room</a>
                 <a href = "">Department</a>

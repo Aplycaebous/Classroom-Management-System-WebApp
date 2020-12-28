@@ -321,3 +321,51 @@ tbody tr:hover {
 }
 
 .delete:hover {background: rgba(255,0,0,0.5);}
+
+.stdcolumn1 {
+  width: 100px;
+  padding-left: 20px;
+  text-align: center;
+}
+
+.stdcolumn2 {
+  width: 175px;
+  text-align: center;
+}
+
+.stdcolumn3 {
+  width: 170px;
+  text-align: center;
+}
+
+.stdcolumn4 {
+  width: 150px;
+  padding-left: 20px;
+}
+
+.stdcolumn5 {
+  width: 140px;
+}
+
+.stdcolumn6 {
+  width: 100px;
+}
+.stdcolumn7 {
+  width: 110px;
+  padding-left: 20px;
+}
+.stdcolumn8 {
+  width: 110px;
+}
+.stdcolumn9 {
+  width: 20px;
+}
+.stdcolumn10 {
+  width: 20px;
+}
+.admcolumn1
+{
+  width: 180px;
+  padding-left: 20px;
+  text-align: center;
+}
