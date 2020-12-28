@@ -107,6 +107,7 @@ auth.onAuthStateChanged(user =>
         .then(function() 
         {
             popMessage.innerHTML = "*Room Booked Successfully";
+            window.setInterval("location.reload();", 1500);
         })
         .catch(function(error) 
         {
@@ -146,7 +147,7 @@ const setupNav = (data) => {
 submitForm.addEventListener('submit', (e) => 
 {
     e.preventDefault();
-
+    roomList.innerHTML = ``;
     buildingNo = submitForm['BuildingNo'].value;
     capacity = submitForm['capacity'].value;
     AC = submitForm['AC'].checked;
