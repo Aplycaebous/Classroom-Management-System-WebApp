@@ -1,8 +1,6 @@
-const { get } = require("jquery");
-
 const tableBody = document.querySelector("#tableBody");
 const navBar = document.querySelector("#navContent");
-const closebtns = document.getElementsByClassName("delete");
+
 auth.onAuthStateChanged(user => 
 {
     var email = user.email;
@@ -42,11 +40,7 @@ auth.onAuthStateChanged(user =>
                     <span id = "${recordID}" value = "${recordID}" class = "delete"> X </span>
                 </td>
             </tr>`
-           
         })
-        
-        
-
         tableBody.innerHTML = html;
     })
 })
