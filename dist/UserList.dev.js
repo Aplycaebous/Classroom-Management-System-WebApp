@@ -48,7 +48,6 @@ function listStudentCR(type) {
     var closeButtons = document.getElementsByClassName("delete");
 
     for (i = 0; i < closeButtons.length; i++) {
-      console.log(closeButtons.length);
       closeButtons[i].addEventListener("click", function () {
         //remove in UI
         this.parentElement.parentElement.style.display = 'none'; //delete in Database

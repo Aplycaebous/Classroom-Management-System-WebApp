@@ -106,7 +106,6 @@ function listStudentCR(type)
             const closeButtons = document.getElementsByClassName("delete");
             for(i = 0; i<closeButtons.length; i++)
             {
-                console.log(closeButtons.length);
                 closeButtons[i].addEventListener("click", function() 
                 {
                     //remove in UI

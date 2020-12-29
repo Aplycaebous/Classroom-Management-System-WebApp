@@ -183,6 +183,7 @@ tbody tr {
   line-height: 1.2;
   font-weight: unset;
   text-align: center;
+  width: auto;
 }
 
 tbody tr:hover {
@@ -369,4 +370,53 @@ tbody tr:hover {
 .buildingcolumn2
 {
   width: auto;
+}
+
+.roomcolumn1
+{
+  width: auto;
+  padding-left: 25px;
+  padding-right: 20px;
+  text-align: center;
+}
+.roomcolumn2
+{
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.roomcolumn3
+{
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.roomcolumn4
+{
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.roomcolumn5
+{
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.roomcolumn6
+{
+  width: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+}
+.roomcolumn7
+{
+  width: auto;
+  padding-right: 20px;
+  text-align: center;
 }
