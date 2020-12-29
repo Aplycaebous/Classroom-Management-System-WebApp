@@ -59,6 +59,7 @@ const setupGuides = (data, inputType) => {
         {
             const failMessage = document.querySelector("#failMessage");
             failMessage.innerHTML = `<p style="color:red"> *User is not a ${inputType}</p>`;
+            auth.signOut();
         }
     });
 };
