@@ -1,6 +1,8 @@
 const tableBody = document.querySelector("#tableBody");
 const navBar = document.querySelector("#navContent");
 
+loadRecords();
+
 //User Record Function
 auth.onAuthStateChanged(user => 
 {
@@ -153,3 +155,29 @@ const setupNav = (data) =>
         }
     });
 };
+
+//Auto-delete records before today
+function loadRecords()
+{
+    auth.onAuthStateChanged(user => 
+    {
+        var email = user.email;
+        db.collection('Record').where('UserEmail','==',email).get().then(snapshot =>
+        {
+            const data = snapshot.docs;
+            data.forEach(doc =>
+            {
+                date = doc.id.substring(6,16);
+                dd = date[0] + date[1];
+                mm = Number(date[3] + date[4])-1;
+                yyyy = date[6] + date[7] + date[8] + date[9];
+                var today = new Date();
+                var recordDate = new Date(yyyy,mm,dd);
+                if(today>recordDate)
+                {
+                    db.collection("Record").doc(doc.id).delete();
+                }
+            })
+        })
+    })
+}

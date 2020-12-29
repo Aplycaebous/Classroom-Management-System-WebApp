@@ -154,9 +154,28 @@ submitForm.addEventListener('submit', (e) =>
     AC = submitForm['AC'].checked;
     projector = submitForm['Projector'].checked;
     board = submitForm['Boards'].value;
-    searchRoom(buildingNo, AC, projector, board, capacity);   
+    dateForm = submitForm['Date'].value;
+    if(checkDate(dateForm))
+        searchRoom(buildingNo, AC, projector, board, capacity);  
+    else
+    {
+        popMessage.innerHTML = "*Invalid Date";
+    } 
 })
 
+function checkDate(date)
+{
+    yyyy = date[0] + date[1] + date[2] + date[3];
+    mm = Number(date[5] + date[6])-1;
+    dd = date[8] + date[9];
+    let today = new Date();
+    let inputDate = new Date(yyyy,mm,dd);
+    if(inputDate>=today) return true;
+    else return false;
+}
+
+
+//Convert Date to proper format
 function convertDate(dateIn)
 {
     let dateYear = dateIn.charAt(0);
