@@ -323,15 +323,11 @@ tbody tr:hover {
 .delete:hover {background: rgba(255,0,0,0.5);}
 
 .stdcolumn1 {
-  width: 100px;
+  width: auto;
   padding-left: 20px;
   text-align: center;
 }
 
-.stdcolumn2 {
-  width: 175px;
-  text-align: center;
-}
 
 .stdcolumn3 {
   width: 170px;
@@ -368,4 +364,9 @@ tbody tr:hover {
   width: 180px;
   padding-left: 20px;
   text-align: center;
+}
+
+.buildingcolumn2
+{
+  width: auto;
 }

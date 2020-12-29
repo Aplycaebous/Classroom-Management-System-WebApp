@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>User List Modification</title>
+	<title>Building List Modification</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -23,8 +23,8 @@
       <div class="topnav" id="mytopnav">
 	  	<div id = "navContent">
 			<a href = "UserProfile.html">Profile</a>
-            <a class = "active" href = "UserList.html">User</a>
-            <a href = "BuildingList.html">Building</a>
+            <a href = "UserList.html">User</a>
+            <a class = "active" href = "BuildingList.html">Building</a>
             <a href = "">Room</a>
             <a href = "">Department</a>
             <a href = "">Program</a>
@@ -36,38 +36,7 @@
 <body>
 	<div class="limiter">
 		<div id = "containerTable" class="container-table100">
-             <div id = "typeModal" class="modal-content">
-                <div id = "typeWrap" class="wrap-login100">
-                    <form id = "typeForm" class="login100-form validate-form">
-                        <span class="login100-form-title">
-                            User List
-                        </span>
-                        <div class="wrap-input100 validate-input">
-                            
-                            <label for="UserType" class="input"style="padding: 0 0px 0 0; font-size:90%;">Select User Type :  </label>
-                                    <select id="userType" name="UserType" style="background-color: 	#DCDCDC">
-                                        <option value = 'Student'>Student</option>
-                                        <option value = 'CR'>CR</option>
-                                        <option value= 'Faculty'>Faculty</option>
-                                        <option value= 'Admin'>Admin</option>
-                                    </select>
-                        </div>
-                        
-                        <div id = "failMessage">
-                        </div>
-                
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Submit
-                            </button>
-                        </div>
-                        
-                        <div class="text-center p-t-136">
-                            
-                        </div>
-                    </form>
-                </div>
-            </div>
+             <!-- Contents of the table will be dynamically loaded -->
 		</div>
 	</div>
 	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
@@ -92,6 +61,6 @@
 		//update firestore settings
 		db.settings({timestampsInSnapshots: true});
 	</script>
-	<script src = "UserList.js"></script>
+	<script src = "BuildingList.js"></script>
 </body>
 </html>
