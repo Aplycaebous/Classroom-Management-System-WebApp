@@ -61,7 +61,7 @@ function listRoom()
                     <td class="roomcolumn5">${boards}</td>
                     <td class="roomcolumn6">${capacity}</td>
                     <td class="roomcolumn7">
-                        <span value = "${buildingNo}" class = "delete"> X </span>
+                        <span value = "${doc.id}" class = "delete"> X </span>
                     </td>
                 </tr>`
             })

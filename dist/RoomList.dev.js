@@ -24,7 +24,7 @@ function listRoom() {
       var AC, projector;
       if (data.AC) AC = "Yes";else AC = "No";
       if (data.Projector) projector = "Yes";else projector = "No";
-      html += "\n                <tr>\n                    <td class=\"roomcolumn1\">".concat(buildingNo, "</td>\n                    <td class=\"roomcolumn2\">").concat(roomNo, "</td>\n                    <td class=\"roomcolumn3\">").concat(AC, "</td>\n                    <td class=\"roomcolumn4\">").concat(projector, "</td>\n                    <td class=\"roomcolumn5\">").concat(boards, "</td>\n                    <td class=\"roomcolumn6\">").concat(capacity, "</td>\n                    <td class=\"roomcolumn7\">\n                        <span value = \"").concat(buildingNo, "\" class = \"delete\"> X </span>\n                    </td>\n                </tr>");
+      html += "\n                <tr>\n                    <td class=\"roomcolumn1\">".concat(buildingNo, "</td>\n                    <td class=\"roomcolumn2\">").concat(roomNo, "</td>\n                    <td class=\"roomcolumn3\">").concat(AC, "</td>\n                    <td class=\"roomcolumn4\">").concat(projector, "</td>\n                    <td class=\"roomcolumn5\">").concat(boards, "</td>\n                    <td class=\"roomcolumn6\">").concat(capacity, "</td>\n                    <td class=\"roomcolumn7\">\n                        <span value = \"").concat(doc.id, "\" class = \"delete\"> X </span>\n                    </td>\n                </tr>");
     });
     html += "\n            </tbody>\n                </table>\n            </div></br></br>\n            <div id = \"deleteMessage\">\n            </div>\n            ";
     containerTable.innerHTML = html; //Delete Building
