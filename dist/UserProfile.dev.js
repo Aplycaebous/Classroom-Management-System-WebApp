@@ -33,7 +33,7 @@ var setupGuides = function setupGuides(data, email) {
     } else if (data.Type === 3) {
       topNav.innerHTML = "\n                <a class=\"active\">Profile</a>\n                <a href=\"BookRoom.html\">Book Room</a>\n                <a href=\"BookingRecords.html\">Booking Records</a>\n                <a href=\"ChangePassword.html\">Change Password</a> \n              ";
     } else if (data.Type === 4) {
-      topNav.innerHTML = "\n                <a class=\"active\">Profile</a>\n                <a href = \"UserList.html\">User</a>\n                <a href = \"BuildingList.html\">Building</a>\n                <a href = \"RoomList.html\">Room</a>\n                <a href = \"DepartmentList.html\">Department</a>\n                <a href = \"Program.html\">Program</a>\n                <a href = \"Routine.html\">Routine</a>\n            ";
+      topNav.innerHTML = "\n                <a class=\"active\">Profile</a>\n                <a href = \"UserList.html\">User</a>\n                <a href = \"BuildingList.html\">Building</a>\n                <a href = \"RoomList.html\">Room</a>\n                <a href = \"DepartmentList.html\">Department</a>\n                <a href = \"ProgramList.html\">Program</a>\n                <a href = \"RoutineList.html\">Routine</a>\n            ";
     }
   });
   userTable.innerHTML = html;

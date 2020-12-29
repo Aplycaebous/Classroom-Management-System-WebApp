@@ -75,7 +75,7 @@ function listRoom()
             `
             containerTable.innerHTML = html;
 
-            //Delete Building
+            //Delete Room
             const closeButtons = document.getElementsByClassName("delete");
             for(i = 0; i<closeButtons.length; i++)
             {

@@ -490,3 +490,9 @@ th, td {
 .topnav .icon {
   display: none;
 }
+
+#deleteButton
+{
+  text-align: center;
+  margin-top: 0%;
+}

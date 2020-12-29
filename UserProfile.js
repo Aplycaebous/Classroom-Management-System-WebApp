@@ -192,8 +192,8 @@ const setupGuides = (data, email) =>
                 <a href = "BuildingList.html">Building</a>
                 <a href = "RoomList.html">Room</a>
                 <a href = "DepartmentList.html">Department</a>
-                <a href = "Program.html">Program</a>
-                <a href = "Routine.html">Routine</a>
+                <a href = "ProgramList.html">Program</a>
+                <a href = "RoutineList.html">Routine</a>
             `
         }
         
