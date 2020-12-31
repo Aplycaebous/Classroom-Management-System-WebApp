@@ -144,3 +144,17 @@ function displayRoutine(routineID)
         }
     });
 }
+
+//Logout
+const logoutButton = document.querySelector('#logoutButton');
+
+logoutButton.onclick = function()
+{
+    db.collection('Admin').doc("currentAdmin").delete().then(
+        function()
+        {
+            auth.signOut();
+            console.log("User signed out successfully");
+        }
+    )
+}

@@ -207,6 +207,22 @@ const logoutButton = document.querySelector('#logoutButton');
 
 logoutButton.onclick = function()
 {
-    auth.signOut();
-    console.log("User signed out successfully");
+    db.collection('Admin').doc('currentAdmin').get().then((docSnapshot) => 
+    {
+        if (docSnapshot.exists) 
+        {
+            db.collection('Admin').doc("currentAdmin").delete().then(
+                function()
+                {
+                    auth.signOut();
+                    console.log("User signed out successfully");
+                }
+            )
+        }
+        else
+        {
+            auth.signOut();
+            console.log("User signed out successfully");
+        }
+  });
 }
