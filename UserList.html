@@ -40,7 +40,7 @@
                 <div id = "typeWrap" class="wrap-login100">
                     <form id = "typeForm" class="login100-form validate-form">
                         <span class="login100-form-title">
-                            User List
+                           User List
                         </span>
                         <div class="wrap-input100 validate-input">
                             
@@ -56,18 +56,20 @@
                         <div id = "failMessage">
                         </div>
                 
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Submit
+                        <div id = "showButton" class="container-login100-form-btn">
+                            <button type = 'submit' class="login100-form-btn">
+                                Show User List
                             </button>
-                        </div>
-                        
-                        <div class="text-center p-t-136">
-                            
-                        </div>
-                    </form>
+						</div>
+						<div id = "addButton" class="container-login100-form-btn">
+                            <button type = 'reset' class="login100-form-btn">
+                                Add User
+                            </button>
+						</div>
+					</form>
+					
                 </div>
-            </div>
+			</div>
 		</div>
 	</div>
 	<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
@@ -93,5 +95,6 @@
 		db.settings({timestampsInSnapshots: true});
 	</script>
 	<script src = "UserList.js"></script>
+	<script src = "AddUser.js"></script>
 </body>
 </html>
