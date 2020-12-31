@@ -101,5 +101,98 @@ function listDept()
                     
                 })
             }
+
+            //Add Building
+            const addButton = document.querySelector('#addRoomButton');
+            addButton.onclick = function()
+            {
+                addhtml = ``;
+                containerTable.innerHTML =
+                `
+                <div class="wrap-login100">
+                            <div class="login100-pic js-tilt" data-tilt>
+                                <img src="images/img-01.png" alt="IMG">
+                            </div>
+
+                            <form id ="addForm" class="login100-form validate-form">
+                                <span class="login100-form-title">
+                                    Add Department
+                                </span>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "deptCode" class="input100" type="number" name="deptCode" placeholder="Dept Code" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "shortName" class="input100" type="text" name="shortName" placeholder="Dept Name (Short Form)" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "fullName" class="input100" type="text" name="fullName" placeholder="Dept Name (Full Form)" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "faculty" class="input100" type="text" name="faculty" placeholder="Faculty" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "estYear" class="input100" type="number" name="estYear" placeholder="Establised Year" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div id = "errorMessage">
+                                
+                                </div>
+                                <div class="container-login100-form-btn">
+                                    <button type = 'submit' class="login100-form-btn">
+                                        Submit
+                                    </button>
+                                </div>
+                                <div class="text-center p-t-12">
+                                <a class="txt2" href="DepartmentList.html">
+                                    Go Back
+                                </a>
+                            </div>
+                            </form>
+                        </div>
+                `
+            //Add Building to database on submit action
+            const addForm = document.querySelector("#addForm");
+            const errorMessage = document.querySelector('#errorMessage');
+
+            addForm.addEventListener('submit',(e) =>
+            {
+                e.preventDefault();
+
+                //Declare form variables
+                deptCode = addForm['deptCode'].value;
+                shortName = addForm['shortName'].value;
+                fullName = addForm['fullName'].value;
+                faculty = addForm['faculty'].value;
+                estYear = addForm['estYear'].value;
+                
+                db.collection('Department').doc(deptCode).get().then((docSnapshot) => 
+                {
+                    if (docSnapshot.exists) 
+                    {
+                        errorMessage.innerHTML = `<p style="color: red;">*Department No. already exists</p>`;
+                    }
+                    else
+                    {
+                        db.collection("Department").doc(deptCode).set(
+                        {
+                                Name: shortName,
+                                FullForm: fullName,
+                                Faculty: faculty,
+                                EstYear: estYear
+                        })
+                        .then(function() 
+                        {
+                            errorMessage.innerHTML = `<p style="color: green;">*Department Added Successfully</p>`;
+                            addForm.reset();
+                            window.setInterval("errorMessage.innerHTML = ``;", 3000);
+                        })
+                    }
+                })    
+            })
+        }
         })
 }
