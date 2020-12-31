@@ -65,7 +65,7 @@ function addStudentCR(type)
 					</div>
 					<div class="wrap-input100 validate-input" >
 						<label for="DateOfBirth" class="input">Date of Birth:</label>
-                    		<input id = "dob" type="date" id="dob" name="dob" style="background-color:#DCDCDC" required></br>
+                    		<input type="date" id = "dob" name="dob" style="background-color:#DCDCDC" required></br>
 					</div>
 					
 					<div class="wrap-input100 validate-input" >
@@ -151,8 +151,8 @@ function addStudentCR(type)
         batch = addForm['batch'].value;
         dept = addForm['dept'].value;
         prog = addForm['prog'].value;
-        dob = addForm['dob'].value;
-        changedDob = changeDob(dob);
+        birthdate = addForm['dob'].value;
+        changedDob = changeDob(birthdate);
         sec = addForm['sec'].value;
         phoneNo = addForm['phoneNo'].value;
         var stdType;
@@ -174,7 +174,7 @@ function addStudentCR(type)
                     Type: stdType,
                     Section: sec,
                     Batch: prog + batch,
-                    DateofBirth: changedDob,
+                    DateOfBirth: changedDob,
                     PhoneNo: phoneNo,
                     StudentID: id
             })
