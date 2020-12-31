@@ -47,7 +47,7 @@ function listProg()
                 progCode = doc.id[2];
                 data = doc.data();
                 
-                offeredFrom = doc.OfferedFrom
+                offeredFrom = data.OfferedFrom;
                 shortForm = data.Name;
                 fullForm = data.FullForm;
                 
