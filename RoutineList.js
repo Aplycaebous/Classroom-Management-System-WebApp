@@ -137,7 +137,7 @@ function displayRoutine(routineID)
         const delButton = document.querySelector("#deleteButton");
         delButton.onclick = function()
         {
-            db.collection("Building").doc(this.value).delete().then(function() 
+            db.collection("Routine").doc(this.value).delete().then(function() 
             {
                 window.location.href = "RoutineList.html";
             })

@@ -141,7 +141,7 @@ function listBuilding()
                                     <span class="focus-input100"></span>
                                 </div>
                                 <div class="wrap-input100 validate-input" >
-                                    <label for= "lift" class="input">Lift:  </label>
+                                    <label>Lift:  </label>
                                     <select id = "lift" name="lift" style="background-color: 	#DCDCDC" required>
                                         <option value = "1">Yes</option>
                                         <option value = "0">No</option>
@@ -167,7 +167,7 @@ function listBuilding()
                             </form>
                         </div>
                 `
-                //Add Building
+            //Add Building to database on submit action
             const addForm = document.querySelector("#addForm");
             const errorMessage = document.querySelector('#errorMessage');
 
@@ -178,48 +178,41 @@ function listBuilding()
                 //Declare form variables
                 buildingName = addForm['name'].value;
                 buildingNo = addForm['buildingno'].value;
-                floors = addForm['floors'].value;
-                rooms = addForm['rooms'].value;
-                lift = addForm['lift'].value;
+                floors = Number(addForm['floors'].value);
+                rooms = Number(addForm['rooms'].value);
+                lift = Number(addForm['lift'].value);
                 estYear = addForm['estYear'].value;
                 var liftBool;
                 if(lift === 1) liftBool = true;
                 else liftBool = false;
 
-                if(checkBuildingNo(buildingNo))
+                db.collection('Building').doc(buildingNo).get().then((docSnapshot) => 
                 {
-                    errorMessage.innerHTML = `<p style="color: red;">*Building No. already exists</p>`;
-                }
-                else
-                {
-                    db.collection("Building").doc(buildingNo).set(
+                    if (docSnapshot.exists) 
                     {
-                            Name: buildingName,
-                            Rooms: rooms,
-                            Floors: floors,
-                            EstYear: estYear,
-                            Lift: liftBool
-                    })
-                    .then(function() 
+                        errorMessage.innerHTML = `<p style="color: red;">*Building No. already exists</p>`;
+                    }
+                    else
                     {
-                        errorMessage.innerHTML = `<p style="color: green;">*Building Added Successfully</p>`;
-                        addForm.reset();
-                        window.setInterval("errorMessage.innerHTML = ``;", 3000);
-                    })
-                }
+                        db.collection("Building").doc(buildingNo).set(
+                        {
+                                Name: buildingName,
+                                Rooms: rooms,
+                                Floors: floors,
+                                EstYear: estYear,
+                                Lift: liftBool
+                        })
+                        .then(function() 
+                        {
+                            errorMessage.innerHTML = `<p style="color: green;">*Building Added Successfully</p>`;
+                            addForm.reset();
+                            window.setInterval("errorMessage.innerHTML = ``;", 3000);
+                        })
+                    }
+                })    
             })
         }
     })
 }
 
-function checkBuildingNo(no)
-{
-    db.collection('Building').doc(no).get().then((docSnapshot) => 
-    {
-        if (docSnapshot.exists) 
-        {
-            return false;
-        }
-        else return true;
-    });
-}
+

@@ -158,70 +158,63 @@ function addStudentCR(type)
         if(type === 'Student') stdType = 1;
         else stdType = 2;
 
-        
-        if(checkEmail(email))
+        db.collection('User').doc(email).get().then((docSnapshot) => 
         {
-            errorMessage.innerHTML = `<p style="color: red;">*Email already exists</p>`;
-        }
-        else
-        {
-            db.collection("User").doc(email).set(
+            if (docSnapshot.exists) 
             {
-                    Name: stdname,
-                    Department: dept,
-                    Program: prog,
-                    Type: stdType,
-                    Section: sec,
-                    Batch: prog + batch,
-                    DateOfBirth: changedDob,
-                    PhoneNo: phoneNo,
-                    StudentID: id
-            })
-            .then(function() 
+                errorMessage.innerHTML = `<p style="color: red;">*Email already exists</p>`;
+            }
+            else 
             {
-                
-                auth.createUserWithEmailAndPassword(email, password).then
-                (
-                    function()
+                db.collection("User").doc(email).set(
                     {
-                        auth.currentUser.sendEmailVerification();
-                        email = db.collection('Admin').get().then(
-                            snapshot =>
-                        {
-                            const snapData = snapshot.docs;
-                            snapData.forEach(doc =>
+                            Name: stdname,
+                            Department: dept,
+                            Program: prog,
+                            Type: stdType,
+                            Section: sec,
+                            Batch: prog + batch,
+                            DateOfBirth: changedDob,
+                            PhoneNo: phoneNo,
+                            StudentID: id
+                    })
+                    .then(function() 
+                    {
+                        auth.createUserWithEmailAndPassword(email, password).then
+                        (
+                            function()
                             {
-                                data = doc.data();
-                                email = data.Email;
-                                password = data.Password;
-                                auth.signInWithEmailAndPassword(email, password).then(
-                                    function()
+                                auth.currentUser.sendEmailVerification();
+                                email = db.collection('Admin').get().then(
+                                    snapshot =>
+                                {
+                                    const snapData = snapshot.docs;
+                                    snapData.forEach(doc =>
                                     {
-                                        errorMessage.innerHTML = `<p style="color: green;">*User Added Successfully</p>`;
-                                        addForm.reset();
-                                        window.setInterval("errorMessage.innerHTML = ``;", 3000);
-                                    }
-                                )
-                            })
-                        })
-                    }
-                )
-            })
-        }
+                                        data = doc.data();
+                                        email = data.Email;
+                                        password = data.Password;
+                                        auth.signInWithEmailAndPassword(email, password).then(
+                                            function()
+                                            {
+                                                errorMessage.innerHTML = `<p style="color: green;">*User Added Successfully</p>`;
+                                                addForm.reset();
+                                                window.setInterval("errorMessage.innerHTML = ``;", 3000);
+                                            }
+                                        )
+                                    })
+                                })
+                            }
+                        )
+                    })
+            }
+        });
+       
+        
     })
 }
 
-function checkEmail(email)
-{
-    db.collection('User').doc(email).get().then((docSnapshot) => 
-    {
-        if (docSnapshot.exists) 
-        {
-            return false;
-        }
-        else return true;
-    });
-}
+
 
 function changeDob(dob)
 {
@@ -327,51 +320,55 @@ function addFaculty()
         phoneNo = addForm['phoneNo'].value;
         designation = addForm['designation'].value;
        
-        if(checkEmail(email))
+        db.collection('User').doc(email).get().then((docSnapshot) => 
         {
-            errorMessage.innerHTML = `<p style="color: red;">*Email already exists</p>`;
-        }
-        else
-        {
-            db.collection("User").doc(email).set(
+            if (docSnapshot.exists) 
             {
-                    Name: facname,
-                    Department: dept,
-                    Type: 3,
-                    ID: id,
-                    PhoneNo: phoneNo,
-                    Designation: designation
-            })
-            .then(function() 
+                errorMessage.innerHTML = `<p style="color: red;">*Email already exists</p>`;
+            }
+            else
             {
-                auth.createUserWithEmailAndPassword(email, password).then
-                (
-                    function()
-                    {
-                        auth.currentUser.sendEmailVerification();
-                        email = db.collection('Admin').get().then(
-                            snapshot =>
+                db.collection("User").doc(email).set(
+                {
+                        Name: facname,
+                        Department: dept,
+                        Type: 3,
+                        ID: id,
+                        PhoneNo: phoneNo,
+                        Designation: designation
+                })
+                .then(function() 
+                {
+                    auth.createUserWithEmailAndPassword(email, password).then
+                    (
+                        function()
                         {
-                            const snapData = snapshot.docs;
-                            snapData.forEach(doc =>
+                            auth.currentUser.sendEmailVerification();
+                            email = db.collection('Admin').get().then(
+                                snapshot =>
                             {
-                                data = doc.data();
-                                email = data.Email;
-                                password = data.Password;
-                                auth.signInWithEmailAndPassword(email, password).then(
-                                    function()
-                                    {
-                                        errorMessage.innerHTML = `<p style="color: green;">*User Created Successfully</p>`;
-                                        addForm.reset();
-                                        window.setInterval("errorMessage.innerHTML = ``;", 3000);
-                                    }
-                                )
+                                const snapData = snapshot.docs;
+                                snapData.forEach(doc =>
+                                {
+                                    data = doc.data();
+                                    email = data.Email;
+                                    password = data.Password;
+                                    auth.signInWithEmailAndPassword(email, password).then(
+                                        function()
+                                        {
+                                            errorMessage.innerHTML = `<p style="color: green;">*User Created Successfully</p>`;
+                                            addForm.reset();
+                                            window.setInterval("errorMessage.innerHTML = ``;", 3000);
+                                        }
+                                    )
+                                })
                             })
-                        })
-                    }
-                )
-            })
-        }
+                        }
+                    )
+                })
+            }
+        });
+        
     })
 }
 
@@ -444,48 +441,56 @@ function addAdmin()
         phoneNo = addForm['phoneNo'].value;
         role = addForm['role'].value;
        
-        if(checkEmail(email))
+        db.collection('User').doc(email).get().then((docSnapshot) => 
         {
-            errorMessage.innerHTML = `<p style="color: red;">*Email already exists</p>`;
-        }
-        else
-        {
-            db.collection("User").doc(email).set(
+            if (docSnapshot.exists) 
             {
-                    Name: adminName,
-                    Type: 4,
-                    PhoneNo: phoneNo,
-                    Role: role
-            })
-            .then(function() 
+                errorMessage.innerHTML = `<p style="color: red;">*Email already exists</p>`;
+            }
+            else
             {
-                auth.createUserWithEmailAndPassword(email, password).then
-                (
-                    function()
-                    {
-                        auth.currentUser.sendEmailVerification();
-                        email = db.collection('Admin').get().then(
-                            snapshot =>
+                db.collection("User").doc(email).set(
+                {
+                        Name: adminName,
+                        Type: 4,
+                        PhoneNo: phoneNo,
+                        Role: role
+                })
+                .then(function() 
+                {
+                    auth.createUserWithEmailAndPassword(email, password).then
+                    (
+                        function()
                         {
-                            const snapData = snapshot.docs;
-                            snapData.forEach(doc =>
+                            auth.currentUser.sendEmailVerification();
+                            email = db.collection('Admin').get().then(
+                                snapshot =>
                             {
-                                data = doc.data();
-                                email = data.Email;
-                                password = data.Password;
-                                auth.signInWithEmailAndPassword(email, password).then(
-                                    function()
-                                    {
-                                        errorMessage.innerHTML = `<p style="color: green;">*User Created Successfully</p>`;
-                                        addForm.reset();
-                                        window.setInterval("errorMessage.innerHTML = ``;", 3000);
-                                    }
-                                )
+                                const snapData = snapshot.docs;
+                                snapData.forEach(doc =>
+                                {
+                                    data = doc.data();
+                                    email = data.Email;
+                                    password = data.Password;
+                                    auth.signInWithEmailAndPassword(email, password).then(
+                                        function()
+                                        {
+                                            errorMessage.innerHTML = `<p style="color: green;">*User Created Successfully</p>`;
+                                            addForm.reset();
+                                            window.setInterval("errorMessage.innerHTML = ``;", 3000);
+                                        }
+                                    )
+                                })
                             })
-                        })
-                    }
-                )
-            })
-        }
+                        }
+                    )
+                })
+            }
+        });
     })
+}
+
+function checkEmail()
+{
+
 }

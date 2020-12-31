@@ -87,14 +87,14 @@ function listDept()
                     this.parentElement.parentElement.style.display = 'none';
                     //delete in Database
                     deleteID = this.getAttribute("value")
-                    db.collection("Building").doc(deleteID).delete().then(function() 
+                    db.collection("Department").doc(deleteID).delete().then(function() 
                     {
                         const deleteMessage = document.querySelector('#deleteMessage');
                         deleteMessage.innerHTML = `<h6 style="color: rgb(180, 0, 0);
                                                             text-align: center;
                                                             font-size: 5;
                                                             ">
-                                                    *Building Removed</h6>`
+                                                    *Department Removed</h6>`
                     }).catch(function(error) {
                         console.error("Error removing document: ", error);
                     });
