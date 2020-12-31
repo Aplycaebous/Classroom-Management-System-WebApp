@@ -17,7 +17,16 @@ loginForm.addEventListener('submit', (e) =>
   
     db.collection('User').where(firebase.firestore.FieldPath.documentId(), '==', email).get().then(snapshot =>
         {
-            setupGuides(snapshot.docs, email, password);
+            if(snapshot.exists)
+            {
+                setupGuides(snapshot.docs, email, password);
+            }
+            else
+            {
+                const failMessage = document.querySelector("#failMessage");
+                failMessage.innerHTML = `<p style="color:red">*Invalid Login Credentials</p>`;
+                loginForm.reset();
+            }
         });
   }).catch((e) =>
     {
@@ -30,7 +39,6 @@ loginForm.addEventListener('submit', (e) =>
 const setupGuides = (data, email, password) => {
     data.forEach(doc => 
     {
-        const userType = doc.data().Type;
         if(userType === 1 || userType === 2)
         {
             console.log("User Logged In Successfully");
