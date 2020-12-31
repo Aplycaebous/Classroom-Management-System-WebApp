@@ -107,7 +107,7 @@ function listRoom()
                     
                 })
             }
-            //Add Building
+            //Add Room
             const addButton = document.querySelector('#addRoomButton');
             addButton.onclick = function()
             {
@@ -198,7 +198,7 @@ function listRoom()
             });
             
 
-            //Add Building to database on submit action
+            //Add Room to database on submit action
             const addForm = document.querySelector("#addForm");
             const errorMessage = document.querySelector('#errorMessage');
 

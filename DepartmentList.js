@@ -102,7 +102,7 @@ function listDept()
                 })
             }
 
-            //Add Building
+            //Add Department
             const addButton = document.querySelector('#addRoomButton');
             addButton.onclick = function()
             {
@@ -154,7 +154,7 @@ function listDept()
                             </form>
                         </div>
                 `
-            //Add Building to database on submit action
+            //Add Department to database on submit action
             const addForm = document.querySelector("#addForm");
             const errorMessage = document.querySelector('#errorMessage');
 
