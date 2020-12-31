@@ -134,11 +134,10 @@ function addStudentCR(type)
     }
     batchList.innerHTML = batchContent;
 
-    //Add users action
+    //Add users 
     const addForm = document.querySelector("#addForm");
     const errorMessage = document.querySelector('#errorMessage');
 
-    //On form submit
     addForm.addEventListener('submit',(e) =>
     {
         e.preventDefault();
@@ -198,7 +197,7 @@ function addStudentCR(type)
                                 auth.signInWithEmailAndPassword(email, password).then(
                                     function()
                                     {
-                                        errorMessage.innerHTML = `<p style="color: green;">*User Created Successfully</p>`;
+                                        errorMessage.innerHTML = `<p style="color: green;">*User Added Successfully</p>`;
                                         addForm.reset();
                                         window.setInterval("errorMessage.innerHTML = ``;", 3000);
                                     }

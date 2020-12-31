@@ -77,6 +77,9 @@ function listBuilding()
             </div></br></br>
             <div id = "deleteMessage">
             </div>
+            <div class="d-flex justify-content-end">
+                <button id = "addRoomButton" type="button" class="btn btn-success">Add Building</button>
+			</div>
             `
             containerTable.innerHTML = html;
 
@@ -84,7 +87,6 @@ function listBuilding()
             const closeButtons = document.getElementsByClassName("delete");
             for(i = 0; i<closeButtons.length; i++)
             {
-                console.log(closeButtons.length);
                 closeButtons[i].addEventListener("click", function() 
                 {
                     //remove in UI
@@ -105,5 +107,119 @@ function listBuilding()
                     
                 })
             }
-        })
+
+            //Add Building
+            const addButton = document.querySelector('#addRoomButton');
+            addButton.onclick = function()
+            {
+                addhtml = ``;
+                containerTable.innerHTML =
+                `
+                <div class="wrap-login100">
+                            <div class="login100-pic js-tilt" data-tilt>
+                                <img src="images/img-01.png" alt="IMG">
+                            </div>
+
+                            <form id ="addForm" class="login100-form validate-form">
+                                <span class="login100-form-title">
+                                    Add Building
+                                </span>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "buildingno" class="input100" type="number" name="buildingno" placeholder="Building No." required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "name" class="input100" type="text" name="BuildingName" placeholder="Building Name" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "floors" class="input100" type="number" name="floors" placeholder="No. of Floors" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "rooms" class="input100" type="number" name="rooms" placeholder="No. of Rooms" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <label for= "lift" class="input">Lift:  </label>
+                                    <select id = "lift" name="lift" style="background-color: 	#DCDCDC" required>
+                                        <option value = "1">Yes</option>
+                                        <option value = "0">No</option>
+                                    </select>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "estYear" class="input100" type="number" name="estYear" placeholder="Establised Year" required>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div id = "errorMessage">
+                                
+                                </div>
+                                <div class="container-login100-form-btn">
+                                    <button type = 'submit' class="login100-form-btn">
+                                        Submit
+                                    </button>
+                                </div>
+                                <div class="text-center p-t-12">
+                                <a class="txt2" href="BuildingList.html">
+                                    Go Back
+                                </a>
+                            </div>
+                            </form>
+                        </div>
+                `
+                //Add Building
+            const addForm = document.querySelector("#addForm");
+            const errorMessage = document.querySelector('#errorMessage');
+
+            addForm.addEventListener('submit',(e) =>
+            {
+                e.preventDefault();
+
+                //Declare form variables
+                buildingName = addForm['name'].value;
+                buildingNo = addForm['buildingno'].value;
+                floors = addForm['floors'].value;
+                rooms = addForm['rooms'].value;
+                lift = addForm['lift'].value;
+                estYear = addForm['estYear'].value;
+                var liftBool;
+                if(lift === 1) liftBool = true;
+                else liftBool = false;
+
+                if(checkBuildingNo(buildingNo))
+                {
+                    errorMessage.innerHTML = `<p style="color: red;">*Building No. already exists</p>`;
+                }
+                else
+                {
+                    db.collection("Building").doc(buildingNo).set(
+                    {
+                            Name: buildingName,
+                            Rooms: rooms,
+                            Floors: floors,
+                            EstYear: estYear,
+                            Lift: liftBool
+                    })
+                    .then(function() 
+                    {
+                        errorMessage.innerHTML = `<p style="color: green;">*Building Added Successfully</p>`;
+                        addForm.reset();
+                        window.setInterval("errorMessage.innerHTML = ``;", 3000);
+                    })
+                }
+            })
+        }
+    })
+}
+
+function checkBuildingNo(no)
+{
+    db.collection('Building').doc(no).get().then((docSnapshot) => 
+    {
+        if (docSnapshot.exists) 
+        {
+            return false;
+        }
+        else return true;
+    });
 }

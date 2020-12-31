@@ -71,6 +71,9 @@ function listProg()
             </div></br></br>
             <div id = "deleteMessage">
             </div>
+            <div class="d-flex justify-content-end">
+                <button id = "addRoomButton" type="button" class="btn btn-success">Add Program</button>
+			</div>
             `
             containerTable.innerHTML = html;
 

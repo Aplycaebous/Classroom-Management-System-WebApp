@@ -524,3 +524,9 @@ iframe {
   margin-top: 20px;
   margin-bottom: 70px;
 }
+
+#addRoomButton
+{
+    border-radius: 10px;
+    width: auto;
+}
