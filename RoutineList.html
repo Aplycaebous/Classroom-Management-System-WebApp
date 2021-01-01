@@ -54,15 +54,48 @@
                         </div>
                 
                         <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Submit
+                            <button id = "showRoutineButton"type = 'submit' class="login100-form-btn">
+                                Show Routine
                             </button>
                         </div>
-                        
-                        <div class="text-center p-t-136">
+					</form>
+				
+					<form id = "addForm" class="login100-form validate-form">
+						<div class="wrap-input100 validate-input">
                             
-                        </div>
-                    </form>
+                            <label for="UserType" class="input"style="padding: 0 0px 0 0; font-size:90%;">Select Program:  </label>
+                                    <select id="progList" name="routineID" style="background-color: 	#DCDCDC">
+                                        <!-- List will be dynamically loaded -->
+                                    </select>
+						</div>
+						<div class="wrap-input100 validate-input">
+                            
+                            <label for="UserType" class="input"style="padding: 0 0px 0 0; font-size:90%;">Select Batch:  </label>
+                                    <select id="batchList" name="routineID" style="background-color: 	#DCDCDC">
+                                        <!-- List will be dynamically loaded -->
+                                    </select>
+						</div>
+						<div class="wrap-input100 validate-input">
+                            
+                            <label for="UserType" class="input"style="padding: 0 0px 0 0; font-size:90%;">Select Section:  </label>
+                                    <select id="sectionList" name="routineID" style="background-color: 	#DCDCDC">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+                                    </select>
+						</div>
+						<div  id = "addRoutineButton" class="container-login100-form-btn">
+                            <button type = 'submit' class="login100-form-btn">
+                                Add Routine
+							</button>
+							
+							<div id = "routineError">
+								
+						  	</div>
+						</div>
+						
+						
+					</form>
                 </div>
             </div>
 		</div>

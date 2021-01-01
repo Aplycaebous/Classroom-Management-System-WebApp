@@ -34,8 +34,9 @@ function listProg()
                                 <th class="roomcolumn2">Program Code</th>
                                 <th class="roomcolumn3">Short Form</th>
                                 <th class="roomcolumn4">Full Name</th>
-                                <th class="roomcolumn5">Offered From</th>
-                                <th class="roomcolumn6" style="opacity:0">Delete</th>
+                                <th class="roomcolumn5">Sections</th>
+                                <th class="roomcolumn6">Offered From</th>
+                                <th class="roomcolumn7" style="opacity:0">Delete</th>
                             </tr>
                         </thead>
                     <tbody id = "tableBody">
@@ -50,6 +51,7 @@ function listProg()
                 offeredFrom = data.OfferedFrom;
                 shortForm = data.Name;
                 fullForm = data.FullForm;
+                sections = data.Sections;
                 
                 html +=
                 `
@@ -58,8 +60,9 @@ function listProg()
                     <td class="roomcolumn2">${progCode}</td>
                     <td class="roomcolumn3">${shortForm}</td>
                     <td class="roomcolumn4">${fullForm}</td>
-                    <td class="roomcolumn5">${offeredFrom}</td>
-                    <td class="roomcolumn6">
+                    <td class="roomcolumn5">${sections}</td>
+                    <td class="roomcolumn6">${offeredFrom}</td>
+                    <td class="roomcolumn7">
                         <span value = "${doc.id}" class = "delete"> X </span>
                     </td>
                 </tr>`
@@ -136,7 +139,10 @@ function listProg()
                                     <input id = "fullName" class="input100" type="text" name="fullName" placeholder="Prog Name (Full Form)" required>
                                     <span class="focus-input100"></span>
                                 </div>
-                                
+                                <div class="wrap-input100 validate-input" >
+                                    <input id = "sections" class="input100" type="number" name="sections" placeholder="No. of Sections" required>
+                                    <span class="focus-input100"></span>
+                                </div>
                                 <div class="wrap-input100 validate-input" >
                                     <input id = "offeredFrom" class="input100" type="number" name="offeredFrom" placeholder="Offered From" required>
                                     <span class="focus-input100"></span>
@@ -184,6 +190,7 @@ function listProg()
                 progCode = addForm['progCode'].value;
                 shortName = addForm['shortName'].value;
                 fullName = addForm['fullName'].value;
+                sections = Number(addForm['sections'].value);
                 offeredFrom = addForm['offeredFrom'].value;
 
                 progID = deptCode + '-' + progCode;
@@ -200,6 +207,7 @@ function listProg()
                         {
                                 Name: shortName,
                                 FullForm: fullName,
+                                Sections: sections,
                                 OfferedFrom: offeredFrom
                         })
                         .then(function() 
